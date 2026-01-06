@@ -5,6 +5,7 @@ public class BasicResponse {
     private Integer errorCode;
 
     public BasicResponse(boolean success, Integer errorCode) {
+        System.out.println();
         this.success = success;
         this.errorCode = errorCode;
     }
