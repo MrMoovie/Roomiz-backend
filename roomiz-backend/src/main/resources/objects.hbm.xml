@@ -4,7 +4,7 @@
 
 
 <hibernate-mapping>
-    <class name="com.roomiz.entities.ClientEntity" table="clients" lazy="false">
+    <class name="com.roomiz.entities.UserEntity" table="users" lazy="false">
         <id name="id" type="int" column="id">
             <generator class="native"/>
         </id>
@@ -14,5 +14,25 @@
         <property name="username" type="string" column="username"/>
         <property name="password" type="string" column="password"/>
         <property name="token" type="string" column="token"/>
+        <many-to-one
+                name="apartment"
+                class="com.roomiz.entities.ApartmentEntity"
+                column="apartment_id"
+                cascade="save-update"
+        />
+
     </class>
+
+    <class name="com.roomiz.entities.ApartmentEntity" table="apartments" lazy="false">
+        <id name="id" type="int" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="deleted" type="boolean">
+            <column name="deleted" default="false"/>
+        </property>
+        <property name="passcode" type="int" column="passcode"/>
+        <property name="address" type="string" column="address"/>
+
+    </class>
+
 </hibernate-mapping>

@@ -1,44 +1,16 @@
 package com.roomiz.responses;
 
 public class LoginResponse extends BasicResponse {
-    private int permission;
     private String token;
     private int id;
-    private int userType;
 
-    public LoginResponse(boolean success, Integer errorCode, int permission, String token, int id,
-                         int userType) {
+    public LoginResponse(boolean success, Integer errorCode, String token, int id) {
         super(success, errorCode);
-        this.permission = permission;
-        this.token = token;
-        this.id = id;
-        this.userType = userType;
-    }
-
-    public LoginResponse(int permission, String token, int id) {
-        this.permission = permission;
         this.token = token;
         this.id = id;
     }
+    public  LoginResponse(){
 
-    public int getPermission() {
-        return permission;
-    }
-
-    public void setPermission(int permission) {
-        this.permission = permission;
-    }
-
-    public LoginResponse() {
-
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getToken() {
@@ -49,11 +21,11 @@ public class LoginResponse extends BasicResponse {
         this.token = token;
     }
 
-    public int getUserType() {
-        return userType;
+    public int getId() {
+        return id;
     }
 
-    public void setUserType(int userType) {
-        this.userType = userType;
+    public void setId(int id) {
+        this.id = id;
     }
 }

@@ -3,7 +3,7 @@ package com.roomiz.entities;
 public class UserEntity extends BaseEntity {
     private String username;
     private String password;
-    private CityEntity city;
+    private ApartmentEntity apartment;
     private String token;
 
     public String getUsername() {
@@ -22,12 +22,12 @@ public class UserEntity extends BaseEntity {
         this.password = password;
     }
 
-    public CityEntity getCity() {
-        return city;
+    public ApartmentEntity getApartment() {
+        return apartment;
     }
 
-    public void setCity(CityEntity city) {
-        this.city = city;
+    public void setApartment(ApartmentEntity apartment) {
+        this.apartment = apartment;
     }
 
     public String getToken() {

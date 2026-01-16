@@ -2,6 +2,7 @@ package com.roomiz.service;
 
 
 import com.roomiz.entities.*;
+import org.apache.catalina.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,16 +63,16 @@ public class Persist {
                 .setParameter("email", email)
                 .uniqueResult();
     }
-    public BasicUser getUserByUsername(String username) {
-        BasicUser user = getClientByUsername(username);
-        if (user == null) {
-            user = getProffesionalByUsername(username);
-        }
-        return user;
-    }
-    public ClientEntity getClientByUsername(String username) {
+//    public BasicUser getUserByUsername(String username) {
+//        BasicUser user = getClientByUsername(username);
+//        if (user == null) {
+//            user = getProffesionalByUsername(username);
+//        }
+//        return user;
+//    }
+    public UserEntity getUserByUsername(String username) {
         return this.sessionFactory.getCurrentSession()
-                .createQuery("FROM ClientEntity " + " WHERE username = :username ", ClientEntity.class)
+                .createQuery("FROM UserEntity " + " WHERE username = :username ", UserEntity.class)
                 .setParameter("username", username)
                 .uniqueResult();
     }
@@ -86,22 +87,22 @@ public class Persist {
         return null;
     }
 
-    public ClientEntity getUserByUsernameAndPassword(String username, String password) {
+    public UserEntity getUserByUsernameAndPassword(String username, String password) {
         return this.sessionFactory.getCurrentSession()
-                .createQuery("FROM ClientEntity  " +
+                .createQuery("FROM UserEntity  " +
                         "WHERE username = :username " +
-                        "AND password = :password", ClientEntity.class)
+                        "AND password = :password", UserEntity.class)
                 .setParameter("username", username)
                 .setParameter("password", password)
                 .uniqueResult();
     }
 
-    public List<PostEntity> getPostsByClientId(int clientId) {
+    public ApartmentEntity getApartmentByClientId(int clientId) {
         return this.sessionFactory.getCurrentSession()
-                .createQuery("FROM PostEntity " +
-                        "WHERE clientEntity.id = :clientId", PostEntity.class)
+                .createQuery("FROM ApartmentEntity " +
+                        "WHERE clientEntity.id = :clientId", ApartmentEntity.class)
                 .setParameter("clientId", clientId)
-                .list();
+                .uniqueResult();
     }
 
     public List<PostEntity> getAllPost() {
@@ -130,18 +131,12 @@ public class Persist {
                 .uniqueResult();
     }
 
-    public ClientEntity getClientByToken(String token) {
-        return this.sessionFactory.getCurrentSession()
-                .createQuery("FROM ClientEntity " +
-                        "WHERE token = :token", ClientEntity.class)
-                .setParameter("token", token)
-                .uniqueResult();
-    }
 
-    public ProffesionalEntity getProfessionalByToken(String token) {
+
+    public UserEntity getUserByToken(String token) {
         return this.sessionFactory.getCurrentSession()
-                .createQuery("FROM ProffesionalEntity " +
-                        "WHERE token = :token", ProffesionalEntity.class)
+                .createQuery("FROM UserEntity " +
+                        "WHERE token = :token", UserEntity.class)
                 .setParameter("token", token)
                 .uniqueResult();
     }
@@ -157,19 +152,13 @@ public class Persist {
                 .uniqueResult();
     }
 
-    public BasicUser getUserByToken(String token) {
-        BasicUser user = getClientByToken(token);
-        if (user == null) {
-            user = getProfessionalByToken(token);
-        }
-        return user;
-    }
 
-    public List<BidEntity> getBidsByProfessionalId(int professionalId) {
+
+    public List<UserEntity> getUsersByApartmentId(int apartmentID) {
         return this.sessionFactory.getCurrentSession()
-                .createQuery("FROM BidEntity " +
-                        "WHERE proffesionalEntity.id = :professionalId", BidEntity.class)
-                .setParameter("professionalId", professionalId)
+                .createQuery("FROM UserEntity user " +
+                        "WHERE user.apartment.id = :apartmentID", UserEntity.class)
+                .setParameter("apartmentID", apartmentID)
                 .list();
     }
 
