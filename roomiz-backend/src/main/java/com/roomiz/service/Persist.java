@@ -161,6 +161,13 @@ public class Persist {
                 .setParameter("apartmentID", apartmentID)
                 .list();
     }
+    public ApartmentEntity getApartmentByApartmentID(int apartmentID){
+        return this.sessionFactory.getCurrentSession()
+                .createQuery("FROM ApartmentEntity apartments" +
+                        "WHERE id = :apartmentID", ApartmentEntity.class)
+                .setParameter("apartmentID", apartmentID)
+                .uniqueResult();
+    }
 
     public List<BidEntity> getProposalsByClientId(int clientId) {
         return this.sessionFactory.getCurrentSession()

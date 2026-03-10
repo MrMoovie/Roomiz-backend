@@ -9,6 +9,7 @@ public class Errors {
     public static final int ERROR_APARTMENT_NOT_FOUND = 1005;
     public static final int ERROR_USER_NOT_FOUND = 1006;
     public static final int ERROR_APARTMENT_ALREADY_EXIST = 1007;
+    public static final int ERROR_UNAUTHORIZED=1008;
 
 
 

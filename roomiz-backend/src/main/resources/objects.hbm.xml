@@ -14,6 +14,9 @@
         <property name="username" type="string" column="username"/>
         <property name="password" type="string" column="password"/>
         <property name="token" type="string" column="token"/>
+        <property name="isAdmin" type="boolean">
+            <column name="isAdmin" default="false"/>
+        </property>
         <many-to-one
                 name="apartment"
                 class="com.roomiz.entities.ApartmentEntity"

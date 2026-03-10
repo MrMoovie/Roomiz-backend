@@ -5,6 +5,7 @@ public class UserEntity extends BaseEntity {
     private String password;
     private ApartmentEntity apartment;
     private String token;
+    private boolean isAdmin = false;
 
     public String getUsername() {
         return username;
@@ -36,5 +37,13 @@ public class UserEntity extends BaseEntity {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public boolean getIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(boolean admin) {
+        isAdmin = admin;
     }
 }
