@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS `courses`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `courses` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) DEFAULT NULL,
+  `itemName` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   `lecturer_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -52,7 +52,7 @@ DROP TABLE IF EXISTS `lecturers`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lecturers` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) DEFAULT NULL,
+  `itemName` varchar(255) DEFAULT NULL,
   `user_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FKp8mocspquan2i6fjx36qghvct` (`user_id`),
@@ -261,7 +261,7 @@ DROP TABLE IF EXISTS `roles`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `roles` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) DEFAULT NULL,
+  `itemName` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -285,7 +285,7 @@ DROP TABLE IF EXISTS `tags`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tags` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) DEFAULT NULL,
+  `itemName` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -309,7 +309,7 @@ DROP TABLE IF EXISTS `types`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `types` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) DEFAULT NULL,
+  `itemName` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;

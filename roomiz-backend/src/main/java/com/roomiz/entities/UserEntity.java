@@ -1,11 +1,17 @@
 package com.roomiz.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.util.Set;
+
 public class UserEntity extends BaseEntity {
     private String username;
     private String password;
     private ApartmentEntity apartment;
     private String token;
     private boolean isAdmin = false;
+    @JsonIgnore
+    private Set<Product> products;
 
     public String getUsername() {
         return username;
@@ -46,4 +52,21 @@ public class UserEntity extends BaseEntity {
     public void setIsAdmin(boolean admin) {
         isAdmin = admin;
     }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
+    }
+
+    public Set<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Set<Product> products) {
+        this.products = products;
+    }
+
 }

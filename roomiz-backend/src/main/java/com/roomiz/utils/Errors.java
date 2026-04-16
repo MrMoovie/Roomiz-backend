@@ -1,6 +1,7 @@
 package com.roomiz.utils;
 
 public class Errors {
+    public static final int SOMETHING_WENT_WRONG = 1000;
     public static final int ERROR_MISSING_USERNAME_OR_PASSWORD = 1001;
     public static final int ERROR_WRONG_CREDENTIALS = 1002;
     public static final int ERROR_NOT_AUTHORIZED = 1003;

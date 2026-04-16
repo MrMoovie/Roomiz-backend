@@ -2,8 +2,8 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
-
 <hibernate-mapping>
+
     <class name="com.roomiz.entities.UserEntity" table="users" lazy="false">
         <id name="id" type="int" column="id">
             <generator class="native"/>
@@ -17,6 +17,7 @@
         <property name="isAdmin" type="boolean">
             <column name="isAdmin" default="false"/>
         </property>
+
         <many-to-one
                 name="apartment"
                 class="com.roomiz.entities.ApartmentEntity"
@@ -24,6 +25,10 @@
                 cascade="save-update"
         />
 
+        <set name="products" table="user_products" cascade="save-update" lazy="false">
+            <key column="user_id"/>
+            <many-to-many class="com.roomiz.entities.Product" column="product_id"/>
+        </set>
     </class>
 
     <class name="com.roomiz.entities.ApartmentEntity" table="apartments" lazy="false">
@@ -35,7 +40,24 @@
         </property>
         <property name="passcode" type="int" column="passcode"/>
         <property name="address" type="string" column="address"/>
+    </class>
 
+    <class name="com.roomiz.entities.Product" table="products" lazy="false">
+        <id name="id" type="int" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="deleted" type="boolean">
+            <column name="deleted" default="false"/>
+        </property>
+
+        <property name="itemName" type="string" column="item_name"/>
+        <property name="amount" type="double" column="amount"/>
+        <property name="price" type="double" column="price"/>
+
+        <set name="users" table="user_products" inverse="true" lazy="false">
+            <key column="product_id"/>
+            <many-to-many class="com.roomiz.entities.UserEntity" column="user_id"/>
+        </set>
     </class>
 
 </hibernate-mapping>
